@@ -1,0 +1,10 @@
+cluster_id,label,patents,median_priority_year,top_countries,top_assignees,top_terms
+2,"hand, sensor, detection",25,2019.0,"CN (17), US (6), AU (1)","900TH HOSPITAL OF ARMY JOINT LOGISTICS SUPPORT FORCE OF PLA (1), AUSHEALTH (1), BEIJING LIGONG GENSHU TECH (1)","hand, sensor, detection, hand tremor, comprises, acceleration"
+4,"end, connected, connecting",24,2020.0,"CN (23), LU (1)","901 HOSPITAL OF JOINT LOGISTICS SUPPORT FORCE OF CHINESE PEOPLES LIBERATION ARMY (1), CHENGDU SECOND PEOPLES HOSPITAL (1), FIRST AFFILIATED HOSPITAL KUNMING MEDICAL UNIV (1)","end, connected, connecting, vibration, rod, kind"
+1,"signal, stimulation, suppression",23,2020.0,"CN (16), US (2), KR (2)","BOSTON LEON (1), DR MARKUS HALLER (1), DR OLIVER KRETZ (1)","signal, stimulation, suppression, invention, electrode, data"
+6,"stimulation, patient, electrical",23,2015.0,"US (20), CN (1), RU (1)","CALA HEALTH (5), BOSTON SCIENT NEUROMODULATION (2), DANIELS JOHN JAMES (2)","stimulation, patient, electrical, nerve, methods, electrodes"
+8,"module, sensor, signal",18,2018.0,"CN (13), US (3), RU (2)","2ND AF HOSP YUYING CHILDRENS HOSP OF WENZHOU MEDICAL UNIV (1), BOGOMOLOV ALEKSEJ VALER EVICH (1), DRAGAN SERGEJ PAVLOVICH (1)","module, sensor, signal, arranged, body, power"
+3,"arm, joint, motion",17,2018.0,"CN (13), US (2), KR (1)","HEFEI INST PHYSICAL SCI CAS (3), CHINESE PLA GENERAL HOSPITAL (1), GOLDMAN DAVID A (1)","arm, joint, motion, human, robot, human body"
+0,"neurological, symptoms, apparatus",9,2018.0,"US (8), AU (1)","ENCORA (4), APDM (1), CIMO GAETANO (1)","neurological, symptoms, apparatus, severity, disorders, user"
+7,"brain, stimulation, nucleus",9,2021.0,"CN (5), US (3), AU (1)","HANGZHOU CHENGNUO MEDICAL TECH (1), HANGZHOU RUIDI BIOLOGICAL TECH (1), LEMOYNE ROBERT (1)","brain, stimulation, nucleus, deep, subthalamic nucleus, subthalamic"
+5,"anatomical, region, anatomical region",3,2019.0,US (3),BATTELLE MEMORIAL INSTITUTE (3),"anatomical, region, anatomical region, emg, anatomical location, time using"
