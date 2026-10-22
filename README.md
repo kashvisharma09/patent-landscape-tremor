@@ -22,27 +22,37 @@ content of the patents rather than only counting them.
 ## Data
 
 - Source: Google Patents Public Data on BigQuery (`patents-public-data.patents.publications`),
-  queried with SQL. Worldwide publications (grants and applications), priority years 2005 to 2025.
-- Selection: tremor / Parkinson / dyskinesia / involuntary movement as whole words in the title or
-  abstract, **and** at least one CPC class in A61, G16H, A47G, A63B, B25J or G01P.
+  queried with SQL. Granted patents worldwide, priority years 2005 to 2025.
+- Selection: the word "tremor" in the title or abstract (English text).
 - One row per patent family. Raw CSVs are not committed (`data/raw/` is git-ignored).
-- A relevance score (`src/clean.py`) then removes drug/herbal patents and machine-translation
-  noise: the first, looser query returned many Chinese utility models in which words like
-  "vibration" appeared to be translated as "tremor". Only patents scoring at least
+- The raw selection is noisy: many Chinese utility models matched, apparently because words like
+  "vibration" are machine-translated as "tremor". A relevance score (`src/clean.py`) therefore removes
+  drug/herbal patents and patents with no human or medical context. Only patents scoring at least
   `MIN_SCORE` are analysed.
 
 ## Results
 
-> Fill these in after running the pipeline, using the numbers and charts it produces.
+> Preliminary results from the current dataset (relevant patent families after filtering).
+> Tables are in `data/processed/` and `reports/cluster_summary.csv`.
 
-- Dataset: **<N>** patent families after filtering (<N_raw> before the relevance filter).
-- Trend: see `reports/figures/trend_by_year.png`. **<one sentence on the trend>**
-- Leading assignees: see `reports/figures/top_assignees.png`. **<top 3 and what they work on>**
-- Offices: see `reports/figures/by_country.png`. **<one sentence>**
-- Technology clusters: see `reports/cluster_summary.csv` and `reports/figures/clusters.png`.
-  **<name each cluster, e.g. stimulation, monitoring, wearable actuation, utensils>**
-- Closest prior art to my device: see `reports/prior_art_top10.csv` and `reports/claim_chart.md`.
-  **<top 3 patents and which elements of my device they do or do not mention>**
+### Filings over time
+![Patent families by priority year](reports/figures/trend_by_year.png)
+
+### Patent offices
+![Patent families by office](reports/figures/by_country.png)
+![Top patent offices over time](reports/figures/country_trend.png)
+
+### Leading assignees
+![Top assignees](reports/figures/top_assignees.png)
+
+### Technology classes (CPC)
+![Most common CPC main groups](reports/figures/top_cpc_groups.png)
+
+### Technology clusters
+![Technology clusters](reports/figures/clusters.png)
+
+### Closest prior art to my device
+See `reports/prior_art_top10.csv` and the abstract-level comparison in `reports/claim_chart.md`.
 
 ## How to run
 
@@ -66,10 +76,13 @@ python -m pytest -v         # tests
 - **Abstract-level only.** The data has titles and abstracts, not claims. The prior-art ranking is
   TF-IDF text similarity and the claim chart only shows whether an abstract mentions a feature.
   Neither is a freedom-to-operate or infringement opinion; real claims must be read in full.
+- **Small, imperfect dataset.** After filtering, only about 150 patent families remain, and some
+  clusters (mainly generic Chinese utility models) are still noisy. Treat the cluster labels and
+  similarity scores as indicative, not definitive.
 - **Keyword relevance filter.** `src/clean.py` is a simple word-list score. It removes obvious
   noise but will miss some relevant patents and keep some irrelevant ones.
-- **Recent years are incomplete.** Applications filed in the last two to three years are often not yet
-  published or granted, so the newest bars understate activity (the chart shades them).
+- **Recent years are incomplete.** Patents filed in the last two to three years are often not yet
+  granted, so the newest bars understate activity (the chart shades them).
 - **Assignee names** are normalised by rules plus a small alias table in `src/analysis.py`;
   individuals filing in their own names are not merged with their companies.
 - **English text only.** Patents without an English title or abstract are not matched.
